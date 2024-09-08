@@ -1,0 +1,65 @@
+.letter {
+  position: absolute;
+  width: 100px; /* 信封宽度 */
+  height: 60px; /* 信封高度 */
+  background: linear-gradient(135deg, #1a1a2e, #16213e); /* 科幻感渐变背景 */
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.6), 0 0 15px rgba(0, 255, 255, 0.4);
+  cursor: pointer;
+  transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
+}
+
+.letter:before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 0;
+  width: 100%; /* 封口宽度与信封一致 */
+  height: 30px; /* 封口高度 */
+  background: linear-gradient(135deg, #16213e, #1a1a2e); /* 与信封相匹配的渐变背景 */
+  border-radius: 5px 5px 0 0; /* 圆角封口 */
+  clip-path: polygon(50% 100%, 0% 0%, 100% 0%); /* 向下的三角形封口 */
+  box-shadow: 0 0 5px rgba(0, 255, 255, 0.5); /* 添加阴影以增强立体感 */
+  transform-origin: top center;
+  transition: all 0.3s ease;
+}
+
+.letter:hover:before {
+  transform: rotateX(180deg) scaleY(1.8); /* 悬停时旋转180度并随着信封扩展 */
+  top: 2px; /* 向上移动封口 */
+}
+
+.letter:hover {
+  transform: scale(1.8); /* 略微增大悬停时的信封 */
+  width: 200px;
+  height: 120px;
+}
+
+.letter-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #00f0f0; /* 科幻蓝色文字 */
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.letter:hover .letter-content {
+  opacity: 1;
+}
+
+.letter-content p {
+  margin: 0;
+  font-size: 16px; /* 更小的字体以适应缩小后的信封 */
+}
+
+.letter-content span {
+  z-index: 100;
+  display: block;
+  margin-top: 8px;
+  font-size: 12px;
+  color: #ff69b4; /* 亮粉色，增强未来感 */
+}
